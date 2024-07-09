@@ -3,12 +3,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
+                echo 'Compiling the java code'
+                sh 'javac Main.java'
             }
         }
-        stage('Test') {
+        stage('Run') {
             steps {
-                echo 'Testing...'
+                echo 'Running the Java code'
+                sh 'java Main'
             }
         }
         stage('Deploy') {
@@ -16,5 +18,11 @@ pipeline {
                 echo 'Deploying...'
             }
         }
+        stage('Testing'){
+            steps{
+                echo "Testing"
+            }
+        }
+            
     }
 }
