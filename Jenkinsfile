@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'ENVIRONMENT', defaultValue: 'dev', description: 'Environment to deploy to')
+    }
     stages {
         stage('Checkout') {
             steps {
