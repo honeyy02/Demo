@@ -1,28 +1,22 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo 'Compiling the java code'
-                sh 'javac Main.java'
+                echo 'Checkout code for ${params.ENVIRONMENT} environment '
             }
         }
-        stage('Run') {
+        stage('Build') {
             steps {
-                echo 'Running the Java code'
-                sh 'java Main'
+                echo 'Building code for ${params.ENVIRONMENT} environment '
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
+                echo 'Deploying  code for ${params.ENVIRONMENT} environment '
             }
         }
-        stage('Testing'){
-            steps{
-                echo "Testing"
-            }
-        }
+        
             
     }
 }
