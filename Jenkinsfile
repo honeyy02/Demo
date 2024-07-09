@@ -1,25 +1,31 @@
 pipeline {
-    agent any
-    parameters {
-        string(name: 'ENVIRONMENT', defaultValue: 'dev', description: 'Environment to deploy to')
-    }
     stages {
-        stage('Checkout') {
-            steps {
-                echo "Checkout code for ${params.ENVIRONMENT} environment "
-            }
-        }
         stage('Build') {
             steps {
-                echo "Building code for ${params.ENVIRONMENT} environment "
+                echo "Building..... "
+                sh 'javac Main.java'
+            }
+        }
+        stage('Run') {
+            steps {
+                echo "Running"
+                sh 'java Main'
             }
         }
         stage('Deploy') {
             steps {
-                echo "Deploying  code for ${params.ENVIRONMENT} environment "
+                echo "Deploying... "
             }
+        }    
+    }
+    post {
+        success{
+            echo 'Pipeline completed successfully'
         }
-        
-            
+        failure{
+            echo 'pipeline failed'
+        }
+        always{
+            echo 'pipeline execution completed'
     }
 }
