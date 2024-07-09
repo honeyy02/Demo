@@ -27,5 +27,6 @@ pipeline {
         }
         always{
             echo 'pipeline execution completed'
+        }
     }
 }
