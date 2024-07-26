@@ -1,6 +1,10 @@
 node {
     // Define the triggers for the pipeline
    properties([pipelineTriggers([githubPush()])])
+     stage('Checkout') {
+            echo "Checking out code..."
+            checkout scm
+        }
     stage('Build') {
             echo "Building..."
             // Compile the Java code
