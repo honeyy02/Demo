@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    properties(
-        [pipelineTriggers([githubPush()])]
-    )
+    options([pipelineTriggers([githubPush()])])
     stages {
         stage('Build') {
             steps {
